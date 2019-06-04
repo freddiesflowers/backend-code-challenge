@@ -47,6 +47,14 @@ class Subscription
      */
     protected $status;
 
+    public function setStatus(Int $status) {
+        $this->status = self::STATUSES_ALLOWED[$status];
+    }
+
+    public function getStatus() {
+        return $this->status;
+    }
+
     /**
      * The subscription plan.
      *
@@ -54,10 +62,26 @@ class Subscription
      */
     protected $plan;
 
+    public function setPlan(Int $plan) {
+        $this->plan = self::PLANS_ALLOWED[$plan];
+    }
+
+    public function getPlan() {
+        return $this->plan;
+    }
+
     /**
      * The next delivery date for this subscription.
      *
      * @var \Carbon\Carbon|null
      */
     protected $nextDeliveryDate;
+
+    public function setNextDeliveryDate($nextDeliveryDate) {
+        $this->nextDeliveryDate = $nextDeliveryDate;
+    }
+
+    public function getNextDeliveryDate() {
+        return $this->nextDeliveryDate;
+    }
 }
