@@ -49,6 +49,7 @@ class Subscription
 
     public function setStatus(Int $status) {
         $this->status = self::STATUSES_ALLOWED[$status];
+        return $this;
     }
 
     public function getStatus() {
@@ -64,6 +65,7 @@ class Subscription
 
     public function setPlan(Int $plan) {
         $this->plan = self::PLANS_ALLOWED[$plan];
+        return $this;
     }
 
     public function getPlan() {
@@ -79,6 +81,7 @@ class Subscription
 
     public function setNextDeliveryDate($nextDeliveryDate) {
         $this->nextDeliveryDate = $nextDeliveryDate;
+        return $this;
     }
 
     public function getNextDeliveryDate() {
