@@ -67,9 +67,11 @@ class Subscription
      * Set subscription status
      *
      * @param $status
+     * @return $this
      */
     public function setStatus($status){
-        $this->status = $status;
+        $this->status = self::STATUSES_ALLOWED[$status];
+        return $this;
     }
 
     /**
@@ -82,12 +84,14 @@ class Subscription
     }
 
     /**
-     * Set subscription plan
      *
+     * Set subscription plan
      * @param $plan
+     * @return $this
      */
     public function setPlan($plan){
-        $this->plan = $plan;
+        $this->plan = self::PLANS_ALLOWED[$plan];
+        return $this;
     }
 
     /**
@@ -103,9 +107,11 @@ class Subscription
      * Set next delivery date for this subscription
      *
      * @param Carbon $nextDeliveryDate
+     * @return $this
      */
     public function setNextDeliveryDate(Carbon $nextDeliveryDate){
         $this->nextDeliveryDate = $nextDeliveryDate;
+        return $this;
     }
 
     /**

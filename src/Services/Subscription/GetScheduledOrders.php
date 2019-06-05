@@ -28,7 +28,9 @@ class GetScheduledOrders
 
         $scheduledOrders = [];
         for ($i = 0; $i < $forNumberOfWeeks; $i++) {
-            $scheduledOrders[$i] = new ScheduledOrder($deliveryDate->copy(), true);
+            $interval = $subscription->getPlan() === 'Fortnightly' ? ($i % 2) === 0 : true;
+
+            $scheduledOrders[$i] = new ScheduledOrder($deliveryDate->copy(), $interval);
 
             $deliveryDate->addWeek();
         }

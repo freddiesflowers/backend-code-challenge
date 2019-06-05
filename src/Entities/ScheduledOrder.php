@@ -62,7 +62,7 @@ class ScheduledOrder
      * @param bool $holiday
      */
     public function setHoliday($holiday){
-        $this->holiday = $holiday;
+        $this->holiday = $this->interval ? $holiday : false;
     }
 
     /**
@@ -89,7 +89,7 @@ class ScheduledOrder
      * @param $optIn
      */
     public function setOptIn($optIn){
-        $this->optIn = $optIn;
+        $this->optIn = $this->interval ? false : $optIn;
     }
 
     /**
