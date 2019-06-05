@@ -13,7 +13,8 @@ class ScheduledOrder
      */
     protected $deliveryDate;
 
-    public function getDeliveryDate() {
+    public function getDeliveryDate()
+    {
         return $this->deliveryDate;
     }
 
@@ -24,11 +25,13 @@ class ScheduledOrder
      */
     protected $holiday = false;
 
-    public function setHoliday(bool $holiday) {
+    public function setHoliday(bool $holiday)
+    {
         return $this->holiday = $holiday;
     }
 
-    public function isHoliday() {
+    public function isHoliday()
+    {
         return $this->holiday && $this->interval;
     }
 
@@ -39,11 +42,13 @@ class ScheduledOrder
      */
     protected $optIn = false;
 
-    public function setOptIn(bool $optIn) {
+    public function setOptIn(bool $optIn)
+    {
         return $this->optIn = $optIn;
     }
 
-    public function isOptIn() {
+    public function isOptIn()
+    {
         return $this->optIn && !$this->interval;
     }
 
@@ -54,7 +59,8 @@ class ScheduledOrder
      */
     protected $interval = true;
 
-    public function isInterval() {
+    public function isInterval()
+    {
         return $this->interval;
     }
 

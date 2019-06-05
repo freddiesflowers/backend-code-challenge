@@ -2,6 +2,8 @@
 
 namespace App\Entities;
 
+use Carbon\Carbon;
+
 class Subscription
 {
     /**
@@ -47,7 +49,7 @@ class Subscription
      */
     protected $status;
 
-    public function setStatus(Int $status) {
+    public function setStatus(int $status) {
         $this->status = self::STATUSES_ALLOWED[$status];
         return $this;
     }
@@ -63,12 +65,14 @@ class Subscription
      */
     protected $plan;
 
-    public function setPlan(Int $plan) {
+    public function setPlan(int $plan)
+    {
         $this->plan = self::PLANS_ALLOWED[$plan];
         return $this;
     }
 
-    public function getPlan() {
+    public function getPlan()
+    {
         return $this->plan;
     }
 
@@ -79,12 +83,14 @@ class Subscription
      */
     protected $nextDeliveryDate;
 
-    public function setNextDeliveryDate($nextDeliveryDate) {
+    public function setNextDeliveryDate(Carbon $nextDeliveryDate)
+    {
         $this->nextDeliveryDate = $nextDeliveryDate;
         return $this;
     }
 
-    public function getNextDeliveryDate() {
+    public function getNextDeliveryDate()
+    {
         return $this->nextDeliveryDate;
     }
 }

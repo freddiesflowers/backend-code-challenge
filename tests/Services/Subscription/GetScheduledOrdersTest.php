@@ -19,7 +19,6 @@ class GetScheduledOrdersTest extends \PHPUnit\Framework\TestCase
 
         $getScheduledOrdersService = new GetScheduledOrders();
         $scheduledOrders           = $getScheduledOrdersService->handle($subscription, $weeks);
-        // var_dump($scheduledOrders);
         $this->assertCount($weeks, $scheduledOrders);
 
         for ($i = 0; $i < $weeks; $i++) {
