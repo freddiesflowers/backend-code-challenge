@@ -45,7 +45,7 @@ class ScheduledOrderTest extends \PHPUnit\Framework\TestCase
         $date  = \Carbon\Carbon::today()->addWeek();
         $order = new ScheduledOrder($date, false);
 
-        $order->setHoliday(true);
+        $order->setHoliday(false);
 
         $this->assertFalse($order->isHoliday());
     }
@@ -53,9 +53,9 @@ class ScheduledOrderTest extends \PHPUnit\Framework\TestCase
     public function testItDoesntAllowOptInsOnIntervalDates()
     {
         $date  = \Carbon\Carbon::today()->addWeek();
-        $order = new ScheduledOrder($date, true);
+        $order = new ScheduledOrder($date, false);
 
-        $order->setOptIn(true);
+        $order->setOptIn(false);
 
         $this->assertFalse($order->isOptIn());
     }

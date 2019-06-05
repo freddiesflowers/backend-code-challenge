@@ -45,4 +45,59 @@ class ScheduledOrder
         $this->deliveryDate = $deliveryDate;
         $this->interval     = $isInterval;
     }
+
+
+    /**
+     * Get scheduled order part
+     *
+     * @return bool|bool
+     */
+    public function isInterval(){
+        return $this->interval;
+    }
+
+    /**
+     * Set delivery as a holiday
+     *
+     * @param bool $holiday
+     */
+    public function setHoliday($holiday){
+        $this->holiday = $holiday;
+    }
+
+    /**
+     * Get delivery as a holiday
+     *
+     * @return bool
+     */
+    public function isHoliday(){
+        return $this->holiday;
+    }
+
+    /**
+     * Get the delivery date of this scheduled order
+     *
+     * @return Carbon
+     */
+    public function getDeliveryDate(){
+        return $this->deliveryDate;
+    }
+
+    /**
+     * Set the scheduled order opt in order
+     *
+     * @param $optIn
+     */
+    public function setOptIn($optIn){
+        $this->optIn = $optIn;
+    }
+
+    /**
+     * Get the scheduled order opt in order
+     *
+     * @return bool
+     */
+    public function isOptIn(){
+        return $this->optIn;
+    }
 }

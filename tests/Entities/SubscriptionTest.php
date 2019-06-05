@@ -11,7 +11,7 @@ class SubscriptionTest extends \PHPUnit\Framework\TestCase
     {
         $subscription = new Subscription();
 
-        $subscription->setStatus(Subscription::STATUS_ACTIVE);
+        $subscription->setStatus(Subscription::STATUSES_ALLOWED[Subscription::STATUS_ACTIVE]);
 
         $this->assertEquals('Active', $subscription->getStatus());
     }
@@ -20,7 +20,7 @@ class SubscriptionTest extends \PHPUnit\Framework\TestCase
     {
         $subscription = new Subscription();
 
-        $subscription->setPlan(Subscription::PLAN_WEEKLY);
+        $subscription->setPlan( Subscription::PLANS_ALLOWED[Subscription::PLAN_WEEKLY]);
 
         $this->assertEquals('Weekly', $subscription->getPlan());
     }

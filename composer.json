@@ -1,7 +1,7 @@
 {
     "require": {
         "phpunit/phpunit": "^7.5",
-        "nesbot/carbon": "^2.18"
+        "nesbot/carbon": "^2.19"
     },
     "autoload": {
         "classmap": [
