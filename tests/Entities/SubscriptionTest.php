@@ -4,8 +4,9 @@ namespace Tests\Entities;
 
 use Carbon\Carbon;
 use App\Entities\Subscription;
+use PHPUnit\Framework\TestCase;
 
-class SubscriptionTest extends \PHPUnit\Framework\TestCase
+class SubscriptionTest extends TestCase
 {
     public function testItSetsAndGetsStatus()
     {

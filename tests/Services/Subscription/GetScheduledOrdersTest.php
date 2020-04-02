@@ -4,20 +4,22 @@ namespace Tests\Services\Subscription;
 
 use App\Entities\Subscription;
 use App\Services\Subscription\GetScheduledOrders;
+use Carbon\Carbon;
+use PHPUnit\Framework\TestCase;
 
-class GetScheduledOrdersTest extends \PHPUnit\Framework\TestCase
+class GetScheduledOrdersTest extends TestCase
 {
     public function testItGeneratesForWeeklySubscription()
     {
-        $date         = (new \Carbon\Carbon('2019-01-01'))->startOfDay();
-        $weeks        = 6;
+        $date = (new Carbon('2019-01-01'))->startOfDay();
+        $weeks = 6;
         $subscription = (new Subscription())
             ->setNextDeliveryDate($date->copy())
             ->setStatus(Subscription::STATUS_ACTIVE)
             ->setPlan(Subscription::PLAN_WEEKLY);
 
         $getScheduledOrdersService = new GetScheduledOrders();
-        $scheduledOrders           = $getScheduledOrdersService->handle($subscription, $weeks);
+        $scheduledOrders = $getScheduledOrdersService->handle($subscription, $weeks);
 
         $this->assertCount($weeks, $scheduledOrders);
 
@@ -32,15 +34,15 @@ class GetScheduledOrdersTest extends \PHPUnit\Framework\TestCase
 
     public function testItGeneratesForFortnightlySubscription()
     {
-        $date         = (new \Carbon\Carbon('2019-08-01'))->startOfDay();
-        $weeks        = 6;
+        $date = (new Carbon('2019-08-01'))->startOfDay();
+        $weeks = 6;
         $subscription = (new Subscription())
             ->setNextDeliveryDate($date->copy())
             ->setStatus(Subscription::STATUS_ACTIVE)
             ->setPlan(Subscription::PLAN_FORTNIGHTLY);
 
         $getScheduledOrdersService = new GetScheduledOrders();
-        $scheduledOrders           = $getScheduledOrdersService->handle($subscription, $weeks);
+        $scheduledOrders = $getScheduledOrdersService->handle($subscription, $weeks);
 
         $this->assertCount($weeks, $scheduledOrders);
 
@@ -58,7 +60,7 @@ class GetScheduledOrdersTest extends \PHPUnit\Framework\TestCase
 
     public function testItGeneratesNumberOfWeeksDynamically()
     {
-        $date         = (new \Carbon\Carbon('2019-08-01'))->startOfDay();
+        $date = (new Carbon('2019-08-01'))->startOfDay();
         $subscription = (new Subscription())
             ->setNextDeliveryDate($date->copy())
             ->setStatus(Subscription::STATUS_ACTIVE)
@@ -67,7 +69,7 @@ class GetScheduledOrdersTest extends \PHPUnit\Framework\TestCase
         // Test it is able to generate all the way upto a whole year
         for ($weeks = 1; $weeks <= 52; $weeks++) {
             $getScheduledOrdersService = new GetScheduledOrders();
-            $scheduledOrders           = $getScheduledOrdersService->handle($subscription, $weeks);
+            $scheduledOrders = $getScheduledOrdersService->handle($subscription, $weeks);
 
             $this->assertCount($weeks, $scheduledOrders);
         }
@@ -80,7 +82,7 @@ class GetScheduledOrdersTest extends \PHPUnit\Framework\TestCase
             ->setPlan(Subscription::PLAN_FORTNIGHTLY);
 
         $getScheduledOrdersService = new GetScheduledOrders();
-        $scheduledOrders           = $getScheduledOrdersService->handle($subscription);
+        $scheduledOrders = $getScheduledOrdersService->handle($subscription);
 
         $this->assertEmpty($scheduledOrders);
     }

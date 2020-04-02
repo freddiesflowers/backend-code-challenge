@@ -9,7 +9,7 @@ class ScheduledOrder
     /**
      * The delivery date of this scheduled order.
      *
-     * @var \Carbon\Carbon
+     * @var Carbon
      */
     protected $deliveryDate;
 
@@ -37,12 +37,31 @@ class ScheduledOrder
     /**
      * ScheduledOrder constructor.
      *
-     * @param \Carbon\Carbon     $deliveryDate
-     * @param \App\Entities\bool $isInterval
+     * @param Carbon $deliveryDate
+     * @param bool   $isInterval
      */
     public function __construct(Carbon $deliveryDate, bool $isInterval)
     {
         $this->deliveryDate = $deliveryDate;
-        $this->interval     = $isInterval;
+        $this->interval = $isInterval;
     }
+
+    // TODO: add comments for all methods
+    public function isInterval() { return $this->interval; }
+
+    public function setHoliday(bool $holiday)
+    {
+        $this->holiday = ($this->interval ? $holiday : $this->holiday);
+    }
+
+    public function isHoliday() { return $this->holiday; }
+
+    public function getDeliveryDate() { return $this->deliveryDate; }
+
+    public function setOptIn(bool $optIn)
+    {
+        $this->optIn = (!$this->interval ? $optIn : $this->optIn);
+    }
+
+    public function isOptIn() { return $this->optIn; }
 }
