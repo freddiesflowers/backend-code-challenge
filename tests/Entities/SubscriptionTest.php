@@ -13,6 +13,7 @@ class SubscriptionTest extends \PHPUnit\Framework\TestCase
 
         $subscription->setStatus(Subscription::STATUS_ACTIVE);
 
+
         $this->assertEquals('Active', $subscription->getStatus());
     }
 

@@ -2,6 +2,9 @@
 
 namespace App\Entities;
 
+use Carbon\Carbon;
+use phpDocumentor\Reflection\Types\String_;
+
 class Subscription
 {
     /**
@@ -60,4 +63,54 @@ class Subscription
      * @var \Carbon\Carbon|null
      */
     protected $nextDeliveryDate;
+
+
+    /**
+     * @param int $status
+     */
+    public function setStatus(int $status)
+    {
+        $this->status = $status;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getStatus(): string
+    {
+        return self::STATUSES_ALLOWED[$this->status];
+    }
+
+    /**
+     * @param int $plan
+     */
+    public function setPlan(int $plan)
+    {
+        $this->plan = $plan;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPlan(): string
+    {
+        return self::PLANS_ALLOWED[$this->plan];
+    }
+
+
+    public function setNextDeliveryDate(Carbon $nextDeliveryDate)
+    {
+        $this->nextDeliveryDate = $nextDeliveryDate;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNextDeliveryDate(): Carbon
+    {
+        return $this->nextDeliveryDate;
+    }
 }
