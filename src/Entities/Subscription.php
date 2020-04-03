@@ -63,6 +63,13 @@ class Subscription
      */
     protected $nextDeliveryDate;
 
+    /**
+     * Sets the subscription status
+     *
+     * @param int $status
+     *
+     * @return $this|bool
+     */
     public function setStatus(int $status)
     {
         if (!array_key_exists($status, self::STATUSES_ALLOWED)) {
@@ -73,11 +80,23 @@ class Subscription
         return $this;
     }
 
+    /**
+     * Returne the human readable status of the subscription
+     *
+     * @return mixed
+     */
     public function getStatus()
     {
         return self::STATUSES_ALLOWED[$this->status];
     }
 
+    /**
+     * Sets the subscription plan
+     *
+     * @param int $plan
+     *
+     * @return $this|bool
+     */
     public function setPlan(int $plan)
     {
         if (!array_key_exists($plan, self::PLANS_ALLOWED)) {
@@ -88,16 +107,33 @@ class Subscription
         return $this;
     }
 
+    /**
+     * Returns the human readable subscription plan
+     *
+     * @return mixed
+     */
     public function getPlan()
     {
         return self::PLANS_ALLOWED[$this->plan];
     }
 
+    /**
+     * Sets the next delivery date of the subscription
+     *
+     * @param Carbon $date
+     *
+     * @return $this
+     */
     public function setNextDeliveryDate(Carbon $date)
     {
         $this->nextDeliveryDate = $date;
         return $this;
     }
 
+    /**
+     * Returns the next delivery date of the subscription
+     *
+     * @return Carbon|null
+     */
     public function getNextDeliveryDate() { return $this->nextDeliveryDate; }
 }

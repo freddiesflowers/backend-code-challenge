@@ -22,11 +22,12 @@ class GetScheduledOrders
         }
 
         $scheduledOrders = [];
+        $deliveryDate = $subscription->getNextDeliveryDate();
 
         for ($i = 0; $i < $forNumberOfWeeks; $i++) {
-            $deliveryDate = ($i > 0 ? $scheduledOrders[$i - 1]->getDeliveryDate()->addWeeks(1) : $subscription->getNextDeliveryDate());
-            $isInterval = ($subscription->getPlan() == Subscription::PLAN_WEEKLY ? true : ($i % 2 == 0));
-            array_push($scheduledOrders, new ScheduledOrder($deliveryDate, $isInterval));
+            $isInterval = ($subscription->getPlan() == Subscription::PLANS_ALLOWED[Subscription::PLAN_WEEKLY] ? true : ($i % 2 == 0));
+            $scheduledOrders[$i] = new ScheduledOrder($deliveryDate->copy(), $isInterval);
+            $deliveryDate = $deliveryDate->addWeek();
         }
 
         return $scheduledOrders;
