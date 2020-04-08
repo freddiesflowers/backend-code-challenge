@@ -60,4 +60,70 @@ class Subscription
      * @var \Carbon\Carbon|null
      */
     protected $nextDeliveryDate;
+
+     /**
+     * Sets the status
+     *
+     * @param STATUS_ACTIVE | STATUS_CANCELLED  $status
+     *
+     * @return $this
+     */
+     public function setStatus($status){
+        $this->status = $status;
+        return $this;
+    } 
+
+     /**
+     * Returns the current status of the subscription
+     *
+     * @return string
+     */
+    public function getStatus(){
+        return Subscription::STATUSES_ALLOWED[$this->status];
+    }
+    
+    /**
+     * Sets the Subscription plan.
+     *
+     * @param PLAN_WEEKLY | PLAN_FORTNIGHTLY $plan
+     *
+     * @return $this
+     */
+    public function setPlan( $plan){
+        $this->plan = $plan;
+        return $this;
+    } 
+
+     /**
+     * Returns the curren plan
+     *
+     * @return string 
+     */
+    public function getPlan(){
+        return Subscription::PLANS_ALLOWED[$this->plan];
+    }
+    
+     /**
+     * Sets the next delivery date
+     *
+     * @param Carbon\Carbon\Date $nextDeliveryDate
+     *
+     * @return this
+     */
+    public function setNextDeliveryDate($nextDeliveryDate){
+        $this->nextDeliveryDate = $nextDeliveryDate;
+        return $this;
+    } 
+
+     /**
+     * gets the next delivery date.
+     *
+     * @return Carbon\Carbon\Date
+     */
+    
+    public function getNextDeliveryDate(){
+        return $this->nextDeliveryDate;
+
+    }
+
 }
