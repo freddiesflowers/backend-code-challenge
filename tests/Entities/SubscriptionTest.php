@@ -2,10 +2,11 @@
 
 namespace Tests\Entities;
 
-use Carbon\Carbon;
 use App\Entities\Subscription;
+use Carbon\Carbon;
+use PHPUnit\Framework\TestCase;
 
-class SubscriptionTest extends \PHPUnit\Framework\TestCase
+class SubscriptionTest extends TestCase
 {
     public function testItSetsAndGetsStatus()
     {
@@ -28,7 +29,7 @@ class SubscriptionTest extends \PHPUnit\Framework\TestCase
     public function testItSetsAndGetsDeliveryDate()
     {
         $subscription = new Subscription();
-        $date         = (new Carbon('Next Thursday'))->startOfDay();
+        $date = (new Carbon('Next Thursday'))->startOfDay();
 
         $subscription->setNextDeliveryDate($date);
 
