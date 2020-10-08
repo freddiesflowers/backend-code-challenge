@@ -1,5 +1,7 @@
 <?php
 
+namespace Tests\Entities;
+
 use App\Entities\ScheduledOrder;
 use Carbon\Carbon;
 use PHPUnit\Framework\TestCase;
